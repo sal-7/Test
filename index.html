@@ -7,5 +7,23 @@
   <h2>Exersice 5:</h2>
   <a href = "Exercise 5-1/Ch 5 index.html"> test 7</a><br>
   <a href = "fff/Chapter 1/Basic Webpage.html"> AAA </a><br>
+  
+  Document document = new Document(PageSize.A4);
+PdfWriter writer = PdfWriter.getInstance(document, outputStream);
+document.open();
+PdfContentByte cb = writer.getDirectContent();
+
+
+PdfReader reader = new PdfReader(templateInputStream);
+PdfImportedPage page = writer.getImportedPage(reader, 1); 
+
+
+document.newPage();
+cb.addTemplate(page, 0, 0);
+
+// Append sample line
+document.add(new Paragraph("my timestamp")); 
+
+document.close();
 </body>
 </html>
